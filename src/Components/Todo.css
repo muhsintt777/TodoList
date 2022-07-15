@@ -1,0 +1,21 @@
+.todo-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgb(210,210,210);
+    background: linear-gradient(90deg, rgba(210,210,210,1) 0%, rgba(78,74,153,1) 100%);
+    margin-bottom: 10px;
+    border-radius: 15px;
+    padding: 5px 20px;
+}
+.todo-container-buttons > button{
+    background-color: rgb(39, 39, 255);
+    color: white;
+    margin: 0 5px;
+    border: none;
+    padding: 7px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 5px 5px 10px rgb(0, 0, 0);
+    
+}
