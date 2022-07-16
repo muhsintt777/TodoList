@@ -9,7 +9,7 @@ function Todo(props) {
       </div>
       <div className="todo-container-buttons">
         <button>Done</button>
-        <button>Delete</button>
+        <button className="delete-button">Delete</button>
       </div>
     </div>
   );

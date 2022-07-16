@@ -19,3 +19,7 @@
     box-shadow: 5px 5px 10px rgb(0, 0, 0);
     
 }
+
+.delete-button{
+    background-color  : red  !important;
+}
