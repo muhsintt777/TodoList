@@ -5,11 +5,26 @@ function Todo(props) {
   return (
     <div className="todo-container">
       <div className="todo-container-content">
-        <p>{props.item}</p>
+        <p style={{ textDecoration: props.item.isDone ? "line-through" : "" }}>
+          {props.item.task}
+        </p>
       </div>
       <div className="todo-container-buttons">
-        <button>Done</button>
-        <button className="delete-button">Delete</button>
+        {!props.item.isDone && (
+          <button
+            onClick={function () {
+              props.doneHandler(props.item.id);
+            }}
+          >
+            Done
+          </button>
+        )}
+        <button
+          className="delete-button"
+          onClick={() => props.deleteHandler(props.item.id)}
+        >
+          Delete
+        </button>
       </div>
     </div>
   );

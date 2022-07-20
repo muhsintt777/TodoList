@@ -3,7 +3,7 @@ import Todo from "./Components/Todo";
 import { useState } from "react";
 
 function App() {
-  const [todoArr, setTodoArr] = useState(["breakfast"]);
+  const [todoArr, setTodoArr] = useState([]);
   const [task, setTask] = useState("");
 
   function changeHandler(event) {
@@ -11,13 +11,34 @@ function App() {
   }
   function clickHandler(event) {
     event.preventDefault();
-    setTodoArr([task, ...todoArr]);
+    setTodoArr([{ id: Date.now(), task: task, isDone: false }, ...todoArr]);
     setTask("");
   }
 
   const newTodoArr = todoArr.map(function (item) {
-    return <Todo item={item} />;
+    return (
+      <Todo item={item} doneHandler={doneHandler} deleteHandler={deleteTodo} />
+    );
   });
+
+  function doneHandler(id) {
+    const newArr = todoArr.map(function (todo) {
+      if (todo.id === id) {
+        todo.isDone = true;
+      }
+
+      return todo;
+    });
+
+    setTodoArr(newArr);
+  }
+
+  function deleteTodo(id) {
+    const reminder = todoArr.filter(function (item) {
+      return item.id !== id;
+    });
+    setTodoArr(reminder);
+  }
   return (
     <div className="App">
       <div className="todo-list-container">
