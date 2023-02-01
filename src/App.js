@@ -17,7 +17,12 @@ function App() {
 
   const newTodoArr = todoArr.map(function (item) {
     return (
-      <Todo item={item} doneHandler={doneHandler} deleteHandler={deleteTodo} />
+      <Todo
+        key={item.id}
+        item={item}
+        doneHandler={doneHandler}
+        deleteHandler={deleteTodo}
+      />
     );
   });
 
