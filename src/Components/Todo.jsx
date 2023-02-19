@@ -6,7 +6,7 @@ function Todo({item, doneHandler, deleteHandler}) {
     <div className="todo-container">
       <div className="todo-container-content">
         <p style={{ textDecoration: item.isDone ? "line-through" : "" }}>
-          {item.task}
+          {item.text}
         </p>
       </div>
       <div className="todo-container-buttons">

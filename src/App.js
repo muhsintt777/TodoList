@@ -1,7 +1,7 @@
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Todo from "./Components/Todo";
-import { addTodo, removeTodo } from "./axios/todoServices";
+import { addTodo, getAllTodo, removeTodo } from "./axios/todoServices";
 
 function App() {
   const [todoArr, setTodoArr] = useState([]);
@@ -46,16 +46,26 @@ function App() {
   }
 
   // rendering
-  const newTodoArr = todoArr.map(function (item) {
-    return (
-      <Todo
-        key={item.id}
-        item={item}
-        doneHandler={doneHandler}
-        deleteHandler={deleteTodo}
-      />
-    );
-  });
+  const newTodoArr = todoArr.map((item) => (
+    <Todo
+      key={item.id}
+      item={item}
+      doneHandler={doneHandler}
+      deleteHandler={deleteTodo}
+    />
+  ));
+
+  useEffect(() => {
+    async function getInitialTodos() {
+      try {
+        const response = await getAllTodo();
+        setTodoArr(response.todos);
+      } catch (err) {
+        alert(err);
+      }
+    }
+    getInitialTodos();
+  }, []);
 
   return (
     <div className="App">

@@ -1,8 +1,12 @@
 import api from "./config";
 
 export const getAllTodo = async () => {
-  const response = await api.get("/todo");
-  return response.data;
+  try {
+    const response = await api.get("/todo");
+    return response.data;
+  } catch (err) {
+    throw err.message;
+  }
 };
 
 export const addTodo = async (text) => {
