@@ -1,19 +1,19 @@
 import React from "react";
 import "./Todo.css";
 
-function Todo(props) {
+function Todo({item, doneHandler, deleteHandler}) {
   return (
     <div className="todo-container">
       <div className="todo-container-content">
-        <p style={{ textDecoration: props.item.isDone ? "line-through" : "" }}>
-          {props.item.task}
+        <p style={{ textDecoration: item.isDone ? "line-through" : "" }}>
+          {item.task}
         </p>
       </div>
       <div className="todo-container-buttons">
-        {!props.item.isDone && (
+        {!item.isDone && (
           <button
             onClick={function () {
-              props.doneHandler(props.item.id);
+              doneHandler(item.id);
             }}
           >
             Done
@@ -21,7 +21,7 @@ function Todo(props) {
         )}
         <button
           className="delete-button"
-          onClick={() => props.deleteHandler(props.item.id)}
+          onClick={() => deleteHandler(item.id)}
         >
           Delete
         </button>

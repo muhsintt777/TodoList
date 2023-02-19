@@ -1,24 +1,33 @@
 import "./App.css";
 import { useState } from "react";
 import Todo from "./Components/Todo";
-import { addTodo } from "./axios/todoServices";
+import { addTodo, removeTodo } from "./axios/todoServices";
 
 function App() {
   const [todoArr, setTodoArr] = useState([]);
   const [task, setTask] = useState("");
 
-  function changeHandler(e) {
-    setTask(e.target.value);
-  }
-
+  //add todo
   async function handleSubmit(e) {
     e.preventDefault();
     try {
       const response = await addTodo(task);
-      if (response) {
-        setTodoArr([{ id: Date.now(), task: task, isDone: false }, ...todoArr]);
-        setTask("");
-      }
+      setTodoArr([
+        { id: response.id, task: response.text, isDone: false },
+        ...todoArr,
+      ]);
+      setTask("");
+    } catch (err) {
+      alert(err);
+    }
+  }
+
+  //delete todo
+  async function deleteTodo(id) {
+    try {
+      const response = await removeTodo(id);
+      const reminder = todoArr.filter((item) => item.id !== response.id);
+      setTodoArr(reminder);
     } catch (err) {
       alert(err);
     }
@@ -36,13 +45,7 @@ function App() {
     setTodoArr(newArr);
   }
 
-  function deleteTodo(id) {
-    const reminder = todoArr.filter(function (item) {
-      return item.id !== id;
-    });
-    setTodoArr(reminder);
-  }
-
+  // rendering
   const newTodoArr = todoArr.map(function (item) {
     return (
       <Todo
@@ -63,7 +66,7 @@ function App() {
               required
               className="header-input"
               value={task}
-              onChange={changeHandler}
+              onChange={(e) => setTask(e.target.value)}
               type="text"
             />
             <button className="header-button">Add</button>
