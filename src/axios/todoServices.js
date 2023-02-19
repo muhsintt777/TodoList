@@ -6,8 +6,12 @@ export const getAllTodo = async () => {
 };
 
 export const addTodo = async (text) => {
-  const response = await api.post("/todo", { text });
-  return response.data;
+  try {
+    const response = await api.post("/todo", { text });
+    return response.data;
+  } catch (err) {
+    throw err.message;
+  }
 };
 
 export const updateTodo = async (id, text) => {
