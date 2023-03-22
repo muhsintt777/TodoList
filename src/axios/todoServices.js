@@ -18,9 +18,9 @@ export const addTodo = async (text) => {
   }
 };
 
-export const updateTodo = async (id, text) => {
+export const updateTodo = async (newData) => {
   try {
-    const response = await api.put("/todo", { id: id, text: text });
+    const response = await api.put("/todo", newData);
     return response.data;
   } catch (err) {
     throw err.message;

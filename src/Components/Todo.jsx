@@ -1,7 +1,7 @@
 import React from "react";
 import "./Todo.css";
 
-function Todo({item, doneHandler, deleteHandler}) {
+function Todo({ item, doneHandler, deleteHandler }) {
   return (
     <div className="todo-container">
       <div className="todo-container-content">
@@ -13,7 +13,7 @@ function Todo({item, doneHandler, deleteHandler}) {
         {!item.isDone && (
           <button
             onClick={function () {
-              doneHandler(item.id);
+              doneHandler({ id: item.id, text: item.text, isDone: true });
             }}
           >
             Done

@@ -1,7 +1,12 @@
 import "./App.css";
 import { useEffect, useState } from "react";
 import Todo from "./Components/Todo";
-import { addTodo, getAllTodo, removeTodo } from "./axios/todoServices";
+import {
+  addTodo,
+  getAllTodo,
+  removeTodo,
+  updateTodo,
+} from "./axios/todoServices";
 
 function App() {
   const [todoArr, setTodoArr] = useState([]);
@@ -12,9 +17,8 @@ function App() {
     e.preventDefault();
     try {
       const response = await addTodo(task);
-      console.log(response);
       setTodoArr([
-        { id: response.id, text: response.text, isDone: false },
+        { id: response.id, text: response.text, isDone: response.isDone },
         ...todoArr,
       ]);
       setTask("");
@@ -34,16 +38,20 @@ function App() {
     }
   }
 
-  function doneHandler(id) {
-    const newArr = todoArr.map(function (todo) {
-      if (todo.id === id) {
-        todo.isDone = true;
-      }
+  async function doneHandler(newData) {
+    try {
+      const response = await updateTodo(newData);
+      const newArr = todoArr.map((todo) => {
+        if (todo.id === response.id) {
+          todo.isDone = true;
+        }
 
-      return todo;
-    });
-
-    setTodoArr(newArr);
+        return todo;
+      });
+      setTodoArr(newArr);
+    } catch (err) {
+      alert(err.message);
+    }
   }
 
   // rendering
@@ -60,6 +68,7 @@ function App() {
     async function getInitialTodos() {
       try {
         const response = await getAllTodo();
+        console.log(response.todos);
         setTodoArr(response.todos);
       } catch (err) {
         alert(err);
