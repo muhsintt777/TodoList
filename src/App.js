@@ -12,8 +12,9 @@ function App() {
     e.preventDefault();
     try {
       const response = await addTodo(task);
+      console.log(response);
       setTodoArr([
-        { id: response.id, task: response.text, isDone: false },
+        { id: response.id, text: response.text, isDone: false },
         ...todoArr,
       ]);
       setTask("");
