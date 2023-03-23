@@ -4,11 +4,6 @@ import "./Todo.css";
 function Todo({ item, doneHandler, deleteHandler }) {
   return (
     <div className="todo-container">
-      <div className="todo-container-content">
-        <p style={{ textDecoration: item.isDone ? "line-through" : "" }}>
-          {item.text}
-        </p>
-      </div>
       <div className="todo-container-buttons">
         {!item.isDone && (
           <button
@@ -19,12 +14,18 @@ function Todo({ item, doneHandler, deleteHandler }) {
             Done
           </button>
         )}
+        <button>Update</button>
         <button
           className="delete-button"
           onClick={() => deleteHandler(item.id)}
         >
           Delete
         </button>
+      </div>
+      <div className="todo-container-content">
+        <p style={{ textDecoration: item.isDone ? "line-through" : "" }}>
+          {item.text}
+        </p>
       </div>
     </div>
   );

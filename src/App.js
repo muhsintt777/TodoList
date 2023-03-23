@@ -80,22 +80,17 @@ function App() {
   return (
     <div className="App">
       <div className="todo-list-container">
-        <header>
-          <form onSubmit={handleSubmit}>
-            <input
-              required
-              className="header-input"
-              value={task}
-              onChange={(e) => setTask(e.target.value)}
-              type="text"
-            />
-            <button className="header-button">Add</button>
-          </form>
-        </header>
-        <div className="todo-list-body">
-          <h1>ToDos</h1>
-          {newTodoArr}
-        </div>
+        <form onSubmit={handleSubmit}>
+          <input
+            className="header-input"
+            required
+            value={task}
+            onChange={(e) => setTask(e.target.value)}
+            type="text"
+          />
+          <button className="header-button">Add</button>
+        </form>
+        <div className="todo-list-body">{newTodoArr}</div>
       </div>
     </div>
   );
