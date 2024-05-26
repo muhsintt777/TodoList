@@ -7,6 +7,7 @@ import {
   removeTodo,
   updateTodo,
 } from "services/todoService";
+import { TodosPage } from "features/todo/todos-page";
 
 function App() {
   const [todoArr, setTodoArr] = useState([]);
@@ -92,6 +93,7 @@ function App() {
         </form>
         <div className="todo-list-body">{newTodoArr}</div>
       </div>
+      <TodosPage/>
     </div>
   );
 }
