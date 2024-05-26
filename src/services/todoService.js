@@ -1,4 +1,4 @@
-import api from "./config";
+import { api } from "../configs/api";
 
 export const getAllTodo = async () => {
   try {

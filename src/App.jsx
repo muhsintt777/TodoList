@@ -6,7 +6,7 @@ import {
   getAllTodo,
   removeTodo,
   updateTodo,
-} from "./axios/todoServices";
+} from "services/todoService";
 
 function App() {
   const [todoArr, setTodoArr] = useState([]);
