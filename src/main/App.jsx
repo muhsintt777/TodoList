@@ -1,6 +1,4 @@
-import "./App.css";
 import { useEffect, useState } from "react";
-import Todo from "./Components/Todo";
 import {
   addTodo,
   getAllTodo,
