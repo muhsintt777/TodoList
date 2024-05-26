@@ -23,7 +23,7 @@ function App() {
       ]);
       setTask("");
     } catch (err) {
-      alert(err);
+      // alert(err);
     }
   }
 
@@ -34,7 +34,7 @@ function App() {
       const reminder = todoArr.filter((item) => item.id !== response.id);
       setTodoArr(reminder);
     } catch (err) {
-      alert(err);
+      // alert(err);
     }
   }
 
@@ -50,7 +50,7 @@ function App() {
       });
       setTodoArr(newArr);
     } catch (err) {
-      alert(err.message);
+      // alert(err.message);
     }
   }
 
@@ -71,7 +71,7 @@ function App() {
         console.log(response.todos);
         setTodoArr(response.todos);
       } catch (err) {
-        alert(err);
+        // alert(err);
       }
     }
     getInitialTodos();
