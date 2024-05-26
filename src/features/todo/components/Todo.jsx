@@ -1,11 +1,10 @@
-import React from "react";
-import "./Todo.css";
+import styles from './todo.module.css';
 
 function Todo({ item, doneHandler, deleteHandler }) {
   return (
-    <div className="todo-container">
-      <div className="todo-container-buttons">
-        {!item.isDone && (
+    <div className={styles.todoContainer}>
+      <div className={styles.todoContainerButtons}>
+        {/* {!item.isDone && ( */}
           <button
             onClick={function () {
               doneHandler({ id: item.id, text: item.text, isDone: true });
@@ -13,18 +12,18 @@ function Todo({ item, doneHandler, deleteHandler }) {
           >
             Done
           </button>
-        )}
+        {/* )} */}
         <button>Update</button>
         <button
-          className="delete-button"
-          onClick={() => deleteHandler(item.id)}
+          className={styles.deleteButton}
+          onClick={() => deleteHandler()}
         >
           Delete
         </button>
       </div>
-      <div className="todo-container-content">
-        <p style={{ textDecoration: item.isDone ? "line-through" : "" }}>
-          {item.text}
+      <div className={styles.todoContainerContent}>
+        <p style={{ textDecoration: item?.isDone ? "line-through" : "" }}>
+          {/* {item.text} */}
         </p>
       </div>
     </div>

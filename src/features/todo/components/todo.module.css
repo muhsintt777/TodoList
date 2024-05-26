@@ -1,4 +1,4 @@
-.todo-container {
+.todoContainer {
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -7,16 +7,16 @@
   background-color: rgba(207, 207, 207, 0.603);
 }
 
-.todo-container > div {
+.todoContainer > div {
   width: 100%;
 }
-.todo-container-buttons {
+.todoContainerButtons {
   display: flex;
   flex-direction: row-reverse;
   column-gap: 5px;
 }
 
-.todo-container-buttons > button {
+.todoContainerButtons > button {
   font-size: 10px;
   font-weight: 600;
   color: white;
@@ -26,12 +26,8 @@
   cursor: pointer;
 }
 
-.todo-container-content {
+.todoContainerContent {
   padding: 10px;
   color: rgb(0, 106, 255);
   font-weight: 600;
 }
-
-/* .delete-button{
-    background-color  : red  !important;
-} */
