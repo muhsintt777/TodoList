@@ -78,24 +78,7 @@ function App() {
     getInitialTodos();
   }, []);
 
-  return (
-    <div className="App">
-      <div className="todo-list-container">
-        <form onSubmit={handleSubmit}>
-          <input
-            className="header-input"
-            required
-            value={task}
-            onChange={(e) => setTask(e.target.value)}
-            type="text"
-          />
-          <button className="header-button">Add</button>
-        </form>
-        <div className="todo-list-body">{newTodoArr}</div>
-      </div>
-      <TodosPage/>
-    </div>
-  );
+  return <TodosPage />;
 }
 
 export default App;

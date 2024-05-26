@@ -6,3 +6,14 @@
   align-items: center;
   background-color: rgba(211, 211, 211, 0.549);
 }
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: calc(100vh - 100px);
+  padding: 20px;
+  background-color: white;
+  box-shadow: 3px 3px 5px rgba(128, 128, 128, 0.471);
+  overflow: hidden;
+}
