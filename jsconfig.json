@@ -6,7 +6,8 @@
       "assets/*": ["./assets/*"],
       "services/*": ["./services/*"],
       "configs/*": ["./configs/*"],
-      "features/*": ["./features/*"]
+      "features/*": ["./features/*"],
+      "utils/*": ["./utils/*"]
     }
   },
   "include": ["src"]
