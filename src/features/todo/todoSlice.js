@@ -3,7 +3,7 @@ import { getAllTodo } from "services/todoService";
 import { API_STATUS } from "utils/constants";
 
 const initialState = {
-  apiStatus: API_STATUS.IDLE,
+  apiStatus: API_STATUS.LOADING,
   todos: [],
 };
 
