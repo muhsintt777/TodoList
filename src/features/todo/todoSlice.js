@@ -3,11 +3,16 @@ import { getAllTodo } from "services/todoService";
 import { API_STATUS } from "utils/constants";
 
 const initialState = {
-  apiStatus: API_STATUS.LOADING,
+  apiStatus: API_STATUS.IDLE,
   todos: [],
 };
 
-export const todoSlice = createSlice({
+export const fetchTodos = createAsyncThunk("todos/fetchTodos", async () => {
+  const res = await getAllTodo();
+  return res;
+});
+
+const todoSlice = createSlice({
   name: "todos",
   initialState,
   reducers: {},
@@ -17,18 +22,14 @@ export const todoSlice = createSlice({
         state.apiStatus = API_STATUS.LOADING;
       })
       .addCase(fetchTodos.fulfilled, (state, action) => {
-        state.todos = action.payload;
         state.apiStatus = API_STATUS.SUCCESS;
+        state.todos = action.payload;
       })
       .addCase(fetchTodos.rejected, (state) => {
         state.apiStatus = API_STATUS.FAILED;
         state.todos = [];
       });
   },
-});
-
-export const fetchTodos = createAsyncThunk("todos/fetchTodos", async () => {
-  return getAllTodo();
 });
 
 export const selectAllTodos = (state) => state.todos.todos;

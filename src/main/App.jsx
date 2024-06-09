@@ -1,17 +1,17 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { TodosPage } from "features/todo/todos-page";
-import { fetchTodos } from "features/todo/todoSlice";
+import { fetchTodos, selectTodoApiStatus } from "features/todo/todoSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { API_STATUS } from "utils/constants";
 
 function App() {
-  const isApiCalled = useRef(false);
+  const dispatch = useDispatch();
+  const todoApiStatus = useSelector(selectTodoApiStatus);
 
   useEffect(() => {
-    (async () => {
-      if (isApiCalled) return;
-      isApiCalled.current = true;
-
-      fetchTodos();
-    })();
+    if (todoApiStatus === API_STATUS.IDLE) {
+      dispatch(fetchTodos());
+    }
   }, []);
 
   return <TodosPage />;
