@@ -31,4 +31,7 @@ export const fetchTodos = createAsyncThunk("todos/fetchTodos", async () => {
   return getAllTodo();
 });
 
+export const selectAllTodos = (state) => state.todos.todos;
+export const selectTodoApiStatus = (state) => state.todos.apiStatus;
+
 export default todoSlice.reducer;
