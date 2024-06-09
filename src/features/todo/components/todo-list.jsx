@@ -6,7 +6,6 @@ import { API_STATUS } from "utils/constants";
 
 export const TodoList = () => {
   const todos = useSelector(selectAllTodos);
-  console.log(todos);
   const todoApiStatus = useSelector(selectTodoApiStatus);
 
   return (
@@ -20,7 +19,12 @@ export const TodoList = () => {
           {todos?.length ? (
             <>
               {todos.map((item) => (
-                <Todo />
+                <Todo
+                  key={item._id}
+                  text={item.text}
+                  isDone={item.isDone}
+                  id={item._id}
+                />
               ))}
             </>
           ) : (
