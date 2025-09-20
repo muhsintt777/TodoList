@@ -3,7 +3,7 @@ import { api } from "../configs/api";
 export const getAllTodo = async () => {
   try {
     const response = await api.get("/todo");
-    return response.data;
+    return response.data.data;
   } catch (err) {
     throw err.message;
   }
@@ -12,7 +12,7 @@ export const getAllTodo = async () => {
 export const addTodo = async (text) => {
   try {
     const response = await api.post("/todo", { text });
-    return response.data;
+    return response.data.data;
   } catch (err) {
     throw err.message;
   }
@@ -21,7 +21,7 @@ export const addTodo = async (text) => {
 export const updateTodo = async (newData) => {
   try {
     const response = await api.put("/todo", newData);
-    return response.data;
+    return response.data.data;
   } catch (err) {
     throw err.message;
   }
@@ -30,7 +30,7 @@ export const updateTodo = async (newData) => {
 export const removeTodo = async (id) => {
   try {
     const response = await api.delete(`/todo/${id}`);
-    return response.data;
+    return response.data.data;
   } catch (err) {
     throw err.message;
   }
